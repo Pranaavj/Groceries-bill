@@ -1,0 +1,64 @@
+import java.util.Scanner;
+public class ChangeMachine {
+
+	public static void main(String[] args) {
+
+		Scanner scan = new Scanner (System.in);
+		while(true) { // sets up ranges so that the program will loop until a valid price is entered ($0 <= price <= $500)
+			System.out.print("Cost of transaction(enter 0 or negative to exit; max is $500): ");
+			double cost = scan.nextDouble();
+				if(cost > 500) // if cost is more than $500, it will not give an output and will loop the prompt again until cost is less than $500
+					continue;
+				if(cost <= 0) //  if cost is less than or equal to zero, then print "done" and it should stop looping **will quit immediately if a negative is entered**
+					break;
+		double total = cost*1.05; // sets up the 5% tax and print line for the payment amount
+			System.out.println("Amount due (with 5.00% tax): " + "$" + total);
+			
+			System.out.print("Please enter payment amount: ");
+		double payment = scan.nextDouble(); // sets up to compare payment amount and cost
+			if(total == payment)
+				System.out.println("Exact Change! Amazing!");
+			
+			else {
+				// sets up for the remaining amount the customer will receive after paying the total
+				double remaining = payment - total; 
+				System.out.println("Change Back:" + remaining);
+				
+				// this whole next chunk is calculating the change back into coin and dollar amount
+				System.out.printf("$100: " + (int)(remaining / 100));
+				remaining = remaining % 100;
+				
+				System.out.printf(" $50: " + (int)(remaining / 50));
+				remaining = remaining % 50;
+
+				System.out.printf(" $20: " + (int)(remaining / 20));
+				remaining = remaining % 20;
+
+				System.out.printf(" $10: " + (int)(remaining / 10));
+				remaining = remaining % 10;
+
+				System.out.printf(" $5: " + (int)(remaining / 5));
+				remaining = remaining % 5;
+
+				System.out.printf(" $1: " + (int)(remaining / 1));
+				remaining = remaining % 1;
+
+				System.out.printf(" $0.25: " + (int)(remaining / 0.25));
+				remaining = remaining % 0.25;
+
+				System.out.printf(" $0.1: " + (int)(remaining / 0.1));
+				remaining = remaining % 0.1;
+
+				System.out.printf(" $0.05: " + (int)(remaining / 0.05));
+				remaining = remaining % 0.05;
+
+				System.out.printf(" $0.01: " + (int)(remaining / 0.01));
+				remaining = remaining % 0.01;	
+				System.out.println();
+				}
+				System.out.println();
+				}
+				// ends the output
+				System.out.println("Done.");
+				}
+}
